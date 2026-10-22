@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Web Guidance: dark-mode-toggle — reflect <meta name="color-scheme"> override in CSS */
+:root {
+  color-scheme: light dark;
+
+  &:has(> head > meta[name="color-scheme"][content="dark"]) {
+    color-scheme: dark;
+  }
+  &:has(> head > meta[name="color-scheme"][content="light"]) {
+    color-scheme: light;
+  }
+}
+
+/* Modern Web Guidance: light-dismiss-a-dialog — style modal dialog backdrop */
+dialog::backdrop {
+  background-color: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+@layer components {
+  .bento-card {
+    @apply rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-slate-900/80 backdrop-blur-xl shadow-lg shadow-slate-900/5 dark:shadow-black/30 transition-all duration-300;
+  }
+
+  .bento-card-interactive {
+    @apply rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/85 dark:bg-slate-900/80 backdrop-blur-xl shadow-md hover:-translate-y-0.5 hover:shadow-xl hover:border-indigo-500/50 dark:hover:border-amber-500/50 transition-all duration-300;
+  }
+
+  .studio-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium tracking-wide;
+  }
+}
+
+/* Custom sleek studio scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.35);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 119, 6, 0.65);
+}
